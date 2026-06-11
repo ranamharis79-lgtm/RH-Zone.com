@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="RH Zone creator-managed gaming storefront for real products only."
+    />
+    <title>RH Zone | Creator Gaming Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;500;600;700;800;900&family=Teko:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <nav class="nav-shell" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="RH Zone home">
+          <span class="brand-mark">RZ</span>
+          <span>
+            <strong>RH Zone</strong>
+            <small>Creator Store</small>
+          </span>
+        </a>
+
+        <button class="icon-button nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <i data-lucide="menu"></i>
+        </button>
+
+        <div class="nav-links" id="navLinks">
+          <a href="#products">Products</a>
+          <a href="#categories">Categories</a>
+          <a href="#deals">Deals</a>
+          <a href="#creator">Creator Console</a>
+        </div>
+
+        <form class="search" role="search">
+          <i data-lucide="search"></i>
+          <input id="searchInput" type="search" placeholder="Search creator products..." aria-label="Search products" />
+        </form>
+
+        <div class="nav-actions">
+          <button class="icon-button" type="button" aria-label="Wishlist">
+            <i data-lucide="heart"></i>
+            <span class="badge" id="wishlistCount">0</span>
+          </button>
+          <button class="icon-button" id="cartButton" type="button" aria-label="Open cart">
+            <i data-lucide="shopping-cart"></i>
+            <span class="badge" id="cartCount">0</span>
+          </button>
+          <a class="account-button" href="#creator">
+            <i data-lucide="store"></i>
+            <span>Creator</span>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-media" aria-hidden="true"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Creator-owned catalog. Real listings only.</p>
+          <h1>Level Up Your Gaming Experience</h1>
+          <p>
+            RH Zone shows only products added by the app creator. Add your real stock,
+            set your prices, and publish a clean gaming storefront without placeholder items.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#products">Shop Now</a>
+            <a class="button secondary" href="#creator">Add Products</a>
+          </div>
+          <div class="hero-stats" aria-label="Store highlights">
+            <span><strong id="heroProductCount">0</strong> Creator products</span>
+            <span><strong>100%</strong> Owner listed</span>
+            <span><strong>No</strong> Fake stock</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section controls-section" id="products">
+        <div class="section-heading">
+          <p class="eyebrow">Creator Listed Products</p>
+          <h2>Sell only what you actually offer</h2>
+        </div>
+        <div class="shop-controls" aria-label="Product filtering and sorting">
+          <div class="filter-group" id="filterButtons">
+            <button class="chip active" type="button" data-filter="All">All</button>
+            <button class="chip" type="button" data-filter="Gaming PCs">PCs</button>
+            <button class="chip" type="button" data-filter="Consoles">Consoles</button>
+            <button class="chip" type="button" data-filter="Keyboards">Keyboards</button>
+            <button class="chip" type="button" data-filter="Mice">Mice</button>
+            <button class="chip" type="button" data-filter="Audio">Headsets</button>
+            <button class="chip" type="button" data-filter="Controllers">Controllers</button>
+            <button class="chip" type="button" data-filter="Gaming Chairs">Chairs</button>
+            <button class="chip" type="button" data-filter="Merchandise">Merch</button>
+          </div>
+          <label class="sort-control">
+            <span>Sort</span>
+            <select id="sortSelect" aria-label="Sort products">
+              <option value="featured">Newest</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="name">Name</option>
+            </select>
+          </label>
+        </div>
+        <div class="product-grid" id="productGrid" aria-live="polite"></div>
+      </section>
+
+      <section class="section creator-console" id="creator">
+        <div class="section-heading">
+          <p class="eyebrow">Creator Console</p>
+          <h2>Add real products to your store</h2>
+          <p class="muted-copy">
+            Products you add here are saved in this browser with local storage. The shop starts empty so no fake products are sold.
+          </p>
+        </div>
+        <form class="creator-form" id="productForm">
+          <label>
+            <span>Product name</span>
+            <input name="name" type="text" placeholder="Your actual product model" required />
+          </label>
+          <label>
+            <span>Category</span>
+            <select name="category" required>
+              <option value="Gaming PCs">Gaming PCs</option>
+              <option value="Consoles">Consoles</option>
+              <option value="Keyboards">Keyboards</option>
+              <option value="Mice">Mice</option>
+              <option value="Audio">Headsets</option>
+              <option value="Controllers">Controllers</option>
+              <option value="Gaming Chairs">Gaming Chairs</option>
+              <option value="Merchandise">Merchandise</option>
+            </select>
+          </label>
+          <label>
+            <span>Price USD</span>
+            <input name="price" type="number" min="1" step="0.01" placeholder="149.99" required />
+          </label>
+          <label>
+            <span>Image URL</span>
+            <input name="image" type="url" placeholder="https://your-real-product-image.jpg" />
+          </label>
+          <label>
+            <span>Deal badge</span>
+            <input name="sale" type="text" maxlength="12" placeholder="Optional, e.g. -15%" />
+          </label>
+          <label class="form-wide">
+            <span>Description</span>
+            <textarea name="desc" rows="3" placeholder="Describe the exact product you are selling." required></textarea>
+          </label>
+          <button class="button primary" type="submit">Add Product</button>
+          <button class="button secondary" id="clearProducts" type="button">Clear Catalog</button>
+        </form>
+      </section>
+
+      <section class="section categories" id="categories">
+        <div class="section-heading">
+          <p class="eyebrow">Gaming Categories</p>
+          <h2>Organize the products you really sell</h2>
+        </div>
+        <div class="category-grid">
+          <article class="category-tile pc"><i data-lucide="monitor-up"></i><span>Gaming PCs</span></article>
+          <article class="category-tile console"><i data-lucide="gamepad-2"></i><span>Consoles</span></article>
+          <article class="category-tile keyboard"><i data-lucide="keyboard"></i><span>Keyboards</span></article>
+          <article class="category-tile mice"><i data-lucide="mouse"></i><span>Mice</span></article>
+          <article class="category-tile audio"><i data-lucide="headphones"></i><span>Headsets</span></article>
+          <article class="category-tile controller"><i data-lucide="joystick"></i><span>Controllers</span></article>
+          <article class="category-tile chairs"><i data-lucide="armchair"></i><span>Gaming Chairs</span></article>
+        </div>
+      </section>
+
+      <section class="flash-sale" id="deals">
+        <div>
+          <p class="eyebrow">Creator Deals</p>
+          <h2>Discounts appear only when you add them</h2>
+          <p id="saleStatus">No creator discounts are active yet.</p>
+        </div>
+        <div class="countdown" id="countdown" aria-label="Daily deal countdown">
+          <span><strong id="days">00</strong>Days</span>
+          <span><strong id="hours">00</strong>Hours</span>
+          <span><strong id="minutes">00</strong>Min</span>
+          <span><strong id="seconds">00</strong>Sec</span>
+        </div>
+      </section>
+
+      <section class="section best-sellers">
+        <div class="section-heading">
+          <p class="eyebrow">Creator Picks</p>
+          <h2>Your latest real listings</h2>
+        </div>
+        <div class="seller-grid" id="creatorPicks"></div>
+      </section>
+
+      <section class="section reviews" id="reviews">
+        <div class="section-heading">
+          <p class="eyebrow">Store Trust</p>
+          <h2>No made-up reviews or invented stock</h2>
+        </div>
+        <div class="review-grid">
+          <article>
+            <i data-lucide="badge-check"></i>
+            <p>Every product card is created from the owner-managed catalog.</p>
+            <strong>Creator controlled</strong>
+          </article>
+          <article>
+            <i data-lucide="package-check"></i>
+            <p>The storefront starts empty until the app creator adds real products.</p>
+            <strong>No sample inventory</strong>
+          </article>
+          <article>
+            <i data-lucide="receipt-text"></i>
+            <p>Checkout is a purchase request preview for the creator's actual listings.</p>
+            <strong>Transparent selling</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="newsletter">
+        <div>
+          <p class="eyebrow">Join the drop</p>
+          <h2>Get alerts when the creator adds real products.</h2>
+        </div>
+        <form>
+          <input type="email" placeholder="Enter your email" aria-label="Email address" required />
+          <button class="button primary" type="submit">Subscribe</button>
+        </form>
+      </section>
+    </main>
+
+    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true" aria-label="Purchase request cart">
+      <div class="drawer-panel">
+        <div class="drawer-header">
+          <div>
+            <p class="eyebrow">Purchase Request</p>
+            <h2>Your Cart</h2>
+          </div>
+          <button class="icon-button" id="closeCart" type="button" aria-label="Close cart">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="checkout-box">
+          <div><span>Subtotal</span><strong id="cartSubtotal">$0</strong></div>
+          <div><span>Creator-listed items only</span><i data-lucide="shield-check"></i></div>
+          <button class="button primary full" type="button">Request Purchase</button>
+        </div>
+      </div>
+    </aside>
+
+    <footer class="footer">
+      <div>
+        <a class="brand" href="#top" aria-label="RH Zone home">
+          <span class="brand-mark">RZ</span>
+          <span><strong>RH Zone</strong><small>Creator gaming store</small></span>
+        </a>
+        <p>Contact: support@rhzone.gg | +1 (555) 018-2048</p>
+      </div>
+      <div class="footer-links">
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+        <a href="#">Discord</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+      </div>
+    </footer>
+  </body>
+</html>
